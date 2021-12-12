@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace HTMLify
 {
@@ -36,6 +37,20 @@ namespace HTMLify
             text = text.Replace(Environment.NewLine, "<br />" + Environment.NewLine);
             string result = loadTemplate().Replace("[[content]]", text);
             return result;
+        }
+
+        public void generateTemplate()
+        {
+            if (!File.Exists(templatePath))
+            {
+                using (var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream("HTMLify.template.html"))
+                {
+                    using (var file = new FileStream(templatePath, FileMode.Create, FileAccess.Write))
+                    {
+                        resource.CopyTo(file);
+                    }
+                }
+            }
         }
     }
 }

@@ -10,7 +10,7 @@
         Width="800" 
         MinWidth="600" 
         MinHeight="400"
-        FocusManager.FocusedElement="{Binding ElementName=richtextContent}" Icon="icon.ico">
+        FocusManager.FocusedElement="{Binding ElementName=richtextContent}" Icon="icon.ico" Initialized="Window_Initialized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

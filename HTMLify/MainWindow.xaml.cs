@@ -46,5 +46,10 @@ namespace HTMLify
             htmlPage = htmlGenerator.convertText(richText);
             htmlGenerator.saveFile(htmlPage);
         }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            htmlGenerator.generateTemplate();
+        }
     }
 }
