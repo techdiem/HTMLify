@@ -32,7 +32,7 @@ namespace HTMLify
 
         public string convertText(string text)
         {
-            Regex r = new Regex(@"(https?://[^\s]+)");
+            Regex r = new Regex(@"(https?://[^\s{}|^~\[\]`<> ]+)");
             text = r.Replace(text, "<a href=\"$1\">$1</a>");
             text = text.Replace(Environment.NewLine, "<br />" + Environment.NewLine);
             string result = loadTemplate().Replace("[[content]]", text);
